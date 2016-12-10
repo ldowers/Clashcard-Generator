@@ -1,0 +1,22 @@
+{
+  "name": "clashcard-generator",
+  "version": "1.0.0",
+  "description": "Basic Flashcard API",
+  "main": "CLI.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ldowers/Clashcard-Generator.git"
+  },
+  "author": "Lori Dowers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ldowers/Clashcard-Generator/issues"
+  },
+  "homepage": "https://github.com/ldowers/Clashcard-Generator#readme",
+  "dependencies": {
+    "inquirer": "^2.0.0"
+  }
+}
