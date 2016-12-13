@@ -1,4 +1,4 @@
-function ClozeDeleted(text, cloze) {
+function ClozeFlashcard(text, cloze) {
     this.text = text;
     this.cloze = cloze;
 };
@@ -17,4 +17,4 @@ var prompts = [{
     message: "Cloze of flashcard?"
 }];
 
-module.exports = {ClozeDeleted: ClozeDeleted, prompts: prompts};
+module.exports = { ClozeDeleted: ClozeDeleted, prompts: prompts };

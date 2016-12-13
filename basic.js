@@ -1,4 +1,4 @@
-function Basic(front, back) {
+function BasicFlashcard(front, back) {
     this.front = front;
     this.back = back;
 };
@@ -17,4 +17,4 @@ var prompts = [{
     message: "Back of flashcard?"
 }];
 
-module.exports = {Basic: Basic, prompts: prompts};
+module.exports = { Basic: Basic, prompts: prompts };
