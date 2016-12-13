@@ -38,12 +38,7 @@ ClozeFlashcard.prototype.printBack = function () {
 
 // Functions
 var handleBasicFlashcardResponse = function (answers) {
-    // console.log(JSON.stringify(answers, null, '  '));
-
     var flashcard = new BasicFlashcard(answers.front, answers.back);
-    // flashcard.printFront();
-    // flashcard.printBack();
-
     var flashcardString = JSON.stringify(flashcard);
 
     fs.appendFileSync("basic.txt", flashcardString + "\n");
@@ -51,13 +46,8 @@ var handleBasicFlashcardResponse = function (answers) {
     console.log("Flashcard saved to basic.txt.");
 };
 
-var handleClozeDeletedFlashcardResponse = function (answers) {
-    // console.log(JSON.stringify(answers, null, '  '));
-
+var handleClozeFlashcardResponse = function (answers) {
     var flashcard = new ClozeFlashcard(answers.text, answers.cloze);
-    // flashcard.printFront();
-    // flashcard.printBack();
-
     var flashcardString = JSON.stringify(flashcard);
 
     fs.appendFileSync("cloze.txt", flashcardString + "\n");
@@ -104,7 +94,7 @@ var displayClozeFlashcard = function (output, counter, showFront) {
     if (counter < output.length - 1) {
         var flashcard = JSON.parse(output[counter]);
         var clozeFlashcard = new ClozeFlashcard(flashcard.text, flashcard.cloze);
-        
+
         if (showFront) {
             showFront = false;
             clozeFlashcard.printFront();
@@ -132,8 +122,7 @@ var displayClozeFlashcard = function (output, counter, showFront) {
 };
 
 var handlePromptResponse = function (answers) {
-    // console.log(JSON.stringify(answers, null, '  '));
-
+    
     // Make a new flashcard
     if (answers.option == "Make a new flashcard") {
         if (answers.type == "Basic") {
@@ -165,12 +154,12 @@ var handlePromptResponse = function (answers) {
                     name: 'cloze',
                     message: 'Word or phrase to delete from flashcard?'
                 }
-            ]).then(handleClozeDeletedFlashcardResponse, handleError);
+            ]).then(handleClozeFlashcardResponse, handleError);
         } else {
             console.log("Not a valid type!");
         }
 
-        // Use existing flashcards
+    // Use existing flashcards
     } else if (answers.option == "Use existing flashcards") {
         if (answers.type == "Basic") {
             fs.readFile("basic.txt", "utf8", function (err, data) {
@@ -226,4 +215,5 @@ var askPrompt = function () {
     ]).then(handlePromptResponse, handleError);
 };
 
+// User Prompt
 askPrompt();
